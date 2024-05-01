@@ -64,12 +64,20 @@ class Player:
     def draw(self) -> None:
         x: float = self.x * 100
         y: float = self.y * 100
+
+        pg.draw.circle(self.game.screen, 'green', (x, y), 15)
+
+        if DRAW_DEBUG:
+            self.draw_debug()
+
+    def draw_debug(self) -> None:
+        x: float = self.x * 100
+        y: float = self.y * 100
         pg.draw.line(self.game.screen,
-                     'yellow',
+                     'red',
                      (x, y),
                      (x + WIDTH * math.cos(self.angle), y + WIDTH * math.sin(self.angle)),
                      2)
-        pg.draw.circle(self.game.screen, 'green', (x, y), 15)
 
     def update(self) -> None:
         self.movement()

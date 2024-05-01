@@ -18,8 +18,8 @@ mini_map: list[list[int]] = [
 class Map:
     def __init__(self, game) -> None:
         self.game = game
-        self.mini_map = mini_map
-        self.world_map = {}
+        self.mini_map: list[list[int]] = mini_map
+        self.world_map: dict = {}
         self.get_map()
 
     def get_map(self) -> None:
