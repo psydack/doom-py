@@ -1,5 +1,5 @@
 RES = WIDTH, HEIGHT = 1600, 900
-FPS: int = 60
+FPS: int = 0
 
 
 PLAYER_POS: tuple[float, float] = 1.5, 5  # mini_map

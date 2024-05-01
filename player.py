@@ -19,12 +19,13 @@ class Player:
 
         angle: float = self.angle
 
-        x, y, angle = self.check_input(speed_sin, speed_cos, angle)
-        self.x += x
-        self.y += y
+        dx, dy, angle = self.check_input(speed_sin, speed_cos, angle)
+        dx, dy = self.check_wall_collision(dx, dy)
+        self.x += dx
+        self.y += dy
         self.angle = angle % math.tau
 
-    def check_input(self, speed_sin: float, speed_cos: float, angle: float) -> [float, float, float]:
+    def check_input(self, speed_sin: float, speed_cos: float, angle: float) -> tuple[float, float, float]:
         x: float = 0
         y: float = 0
         keys = pg.key.get_pressed()
@@ -48,6 +49,18 @@ class Player:
 
         return x, y, angle
 
+    def check_wall(self, x: int, y: int) -> tuple[int, int]:
+        return (x, y) not in self.game.map.world_map
+
+    def check_wall_collision(self, dx: float, dy: float) -> tuple[float, float]:
+        if not self.check_wall(int(self.x + dx), int(self.y)):
+            dx = 0
+
+        if not self.check_wall(int(self.x), int(self.y + dy)):
+            dy = 0
+
+        return dx, dy
+
     def draw(self) -> None:
         x: float = self.x * 100
         y: float = self.y * 100
@@ -62,9 +75,9 @@ class Player:
         self.movement()
 
     @property
-    def pos(self) -> [float, float]:
+    def pos(self) -> tuple[float, float]:
         return self.x, self.y
 
     @property
-    def map_pos(self) -> [int, int]:
+    def map_pos(self) -> tuple[int, int]:
         return int(self.x), int(self.y)
