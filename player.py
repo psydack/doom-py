@@ -8,7 +8,7 @@ class Player:
         self.game = game
         self.x, self.y = PLAYER_POS
         self.angle: float = PLAYER_ANGLE
-        self.rel: tuple[int, int]
+        self.rel: int = 0
 
     def movement(self) -> None:
         scale: float = PLAYER_SIZE_SCALE / self.game.delta_time
@@ -79,7 +79,7 @@ class Player:
                      (x + WIDTH * math.cos(self.angle), y + WIDTH * math.sin(self.angle)),
                      2)
 
-    def mouse_control(self):
+    def mouse_control(self) -> None:
         mx, my = pg.mouse.get_pos()
         if mx < MOUSE_BORDER_LEFT or mx > MOUSE_BORDER_RIGHT:
             pg.mouse.set_pos([HALF_WIDTH, HALF_HEIGHT])
