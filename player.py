@@ -35,10 +35,10 @@ class Player:
         if keys[pg.K_s]:
             x += -speed_cos
             y += -speed_sin
-        if keys[pg.K_w]:
+        if keys[pg.K_a]:
             x += speed_sin
             y += -speed_cos
-        if keys[pg.K_w]:
+        if keys[pg.K_d]:
             x += -speed_sin
             y += speed_cos
 
