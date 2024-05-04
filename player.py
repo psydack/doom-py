@@ -62,17 +62,15 @@ class Player:
         return dx, dy
 
     def draw(self) -> None:
-        x: float = self.x * 100
-        y: float = self.y * 100
-
-        pg.draw.circle(self.game.screen, 'green', (x, y), 15)
-
         if DRAW_DEBUG:
             self.draw_debug()
 
     def draw_debug(self) -> None:
         x: float = self.x * 100
         y: float = self.y * 100
+
+        pg.draw.circle(self.game.screen, 'green', (x, y), 15)
+
         pg.draw.line(self.game.screen,
                      'red',
                      (x, y),

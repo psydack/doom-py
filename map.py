@@ -1,4 +1,5 @@
 import pygame as pg
+from settings import DRAW_DEBUG
 
 _ = 0
 
@@ -29,6 +30,10 @@ class Map:
                     self.world_map[(i, j)] = value
 
     def draw(self) -> None:
+        if DRAW_DEBUG:
+            self.draw_debug()
+
+    def draw_debug(self) -> None:
         [pg.draw.rect(self.game.screen,
                       'darkgray',
                       (pos[0] * 100, pos[1] * 100, 100, 100),

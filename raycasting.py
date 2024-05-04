@@ -28,6 +28,17 @@ class RayCasting:
             if DRAW_DEBUG:
                 self.draw_debug(depth, cos_a, sin_a)
 
+            # remove fishbowl effect
+            depth *= math.cos(self.game.player.angle - ray_angle)
+
+            # projection
+            proj_height: float = SCREEN_DIST / (depth + 0.0001)
+
+            # draw wall
+            color = [255 / (1 + depth ** 5 * 0.00002)] * 3
+            pg.draw.rect(self.game.screen, color,
+                         (ray * SCALE, HALF_HEIGHT - proj_height // 2, SCALE, proj_height))
+
     def update(self) -> None:
         self.ray_cast()
 
