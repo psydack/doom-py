@@ -6,6 +6,7 @@ from player import *
 from raycasting import *
 from object_renderer import *
 
+
 class Game:
     def __init__(self) -> None:
         pg.init()
@@ -13,6 +14,7 @@ class Game:
         self.screen = pg.display.set_mode(RES)
         self.clock = pg.time.Clock()
         self.delta_time = 1
+
         self.new_game()
 
     def new_game(self) -> None:

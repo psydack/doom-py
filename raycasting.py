@@ -2,6 +2,7 @@ import pygame as pg
 import math
 from settings import *
 
+
 class RayCasting:
     def __init__(self, game) -> None:
         self.game = game
@@ -87,7 +88,8 @@ class RayCasting:
         # pg.draw.rect(self.game.screen, color,
         #              (ray * SCALE, HALF_HEIGHT - proj_height // 2, SCALE, proj_height))
 
-    def calculate_horizontals(self, cos_a: float, sin_a: float, pos: [float, float], map_pos: [int, int], world_map: dict)\
+    def calculate_horizontals(self, cos_a: float, sin_a: float, pos: [float, float], map_pos: [int, int],
+                              world_map: dict) \
             -> tuple[float, float, float, int]:
         ox, oy = pos
         _, y_map = map_pos
@@ -110,7 +112,7 @@ class RayCasting:
 
         return x_hor, y_hor, depth_hor, texture_hor
 
-    def calculate_verticals(self, cos_a: float, sin_a: float, pos: [float, float], map_pos: [int, int], world_map: dict)\
+    def calculate_verticals(self, cos_a: float, sin_a: float, pos: [float, float], map_pos: [int, int], world_map: dict) \
             -> tuple[float, float, float, int]:
         ox, oy = pos
         x_map, _ = map_pos
